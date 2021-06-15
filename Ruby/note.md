@@ -51,3 +51,23 @@ run_couple
  ```
  
  将 lambda 和 proc 位置互调后，则输出全部信息，可见在 proc 中 return 可以中断源方法
+ 
+ ### 区别二：参数约束不同
+ 
+ ``` ruby
+ 
+ # lambda must be passed matched parameters
+ hello_proc = proc do |a, b|
+   puts 'hello proc'
+ end
+ # hello_proc.call 1 # no error
+ hello_proc.call
+ 
+ hello_lambda = lambda do |a, b|
+  puts 'hello lambda'
+ end
+
+ # hello_lambda.call # occure exception
+ hello_lambda.call 1, 2
+ 
+ ```
