@@ -73,4 +73,22 @@ run_couple
  
  ```
  
+ ## 3) 了解 `Block` 
  
+ - 作为参数
+ - 匿名函数
+ - Callback
+ - 使用 do / end 或者 {} 来定义
+
+ ``` ruby
+ 
+ # before ruby 2.0
+ 
+ x = 1
+ 1..2.each {|x| puts x} # => x = 3
+ 
+ ```
+ 
+ 注：ruby 2.0 之前的版本，块代码会污染变量
+ 
+ 通过 `yield` 和 `call` 调用块代码 
