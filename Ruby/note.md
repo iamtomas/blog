@@ -147,4 +147,24 @@ run_couple
    s3.foo #=> NoMethodError: undefined method `foo' for #<Klass:0x401b3a38>
    
    ```
+  
+  ## 6)  内置方法 `send` 和 `respond_to?`
+  
+  ``` ruby
+  
+  # 通过 `send` 调用方法
+  
+  def hi
+   puts 'hello'
+  end
+  
+  send(:hi) # => hello
+  
+  # `respond_to?` 判断是否有这个内置方法
+  
+  a = 'hello'
+  a.respond_to?(:length)
+  
+  ```
+  
 
