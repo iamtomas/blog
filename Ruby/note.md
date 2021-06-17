@@ -92,3 +92,59 @@ run_couple
  注：ruby 2.0 之前的版本，块代码会污染变量
  
  通过 `yield` 和 `call` 调用块代码 
+ 
+ ## 4) 了解 `Boolean` 表达式
+ 
+ - &&,||,!
+ - and,or,not
+
+ 注：表达式的优先级
+ 
+ ## 5)  `String` 常用方法
+ 
+ 1. `#sub` 和 `#gsub` 区别
+  `#sub` 匹配第一个字符并替换
+  `#gsub` 匹配所有字符并替换
+  
+  ``` ruby
+  
+  a = "hello world"
+  a.sub('o','a') # => "hella world"
+  a.gsub('o','a') # => "hella warld"
+  
+  ```
+  
+  2. `#dup` 作用及与 `#clone` 区别
+
+   ``` ruby
+   
+   # `#dup` 作用
+   a = "hello"
+   b = a
+   a.object_id == b.object_id # => true
+   b = a.dup
+   a.object_id == b.object_id # => false
+   
+   # `#dup` 与 `#clone` 区别
+   ## 在 ruby-doc 文档中解释到：`#dup` 不会复制类扩展到模块，例如：
+   
+   class Klass
+     attr_accessor :str
+   end
+
+   module Foo
+     def foo; 'foo'; end
+   end
+
+   s1 = Klass.new #=> #<Klass:0x401b3a38>
+   s1.extend(Foo) #=> #<Klass:0x401b3a38>
+   s1.foo #=> "foo"
+
+   s2 = s1.clone #=> #<Klass:0x401b3a38>
+   s2.foo #=> "foo"
+
+   s3 = s1.dup #=> #<Klass:0x401b3a38>
+   s3.foo #=> NoMethodError: undefined method `foo' for #<Klass:0x401b3a38>
+   
+   ```
+
