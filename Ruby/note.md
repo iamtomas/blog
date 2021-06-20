@@ -167,4 +167,6 @@ run_couple
   
   ```
   
+  ## 7)  Ruby 的动态特性 `defined_method`
+  
 
