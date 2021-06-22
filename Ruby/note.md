@@ -167,6 +167,39 @@ run_couple
   
   ```
   
-  ## 7)  Ruby 的动态特性 `defined_method`
+  ## 7)  `defined_method` 实现简易的 `attr_accessor`
   
+  ``` ruby
+  
+  class Hi
+   def self.set val
+     define_method val do
+       instance_variable_get "@#{val}"
+     end
+
+     define_method "#{val}=" do |value|
+       instance_variable_set "@#{val}", value
+     end
+   end
+
+   set :name
+   set :age
+
+   def initialize(name,age)
+     @name = name
+     @age = age
+   end
+ end
+
+ h = Hi.new('tomas',24)
+
+ puts h.name
+ h.name = "i am tomas!"
+ puts h.name
+  
+ ```
+ 
+ 注：`#instance_variable_set` 和 `#instance_variable_get` 相当于实现 setter 和 getter 
+ 
+ ## 8)  
 
