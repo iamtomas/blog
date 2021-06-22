@@ -42,7 +42,7 @@ run_couple
 
  ```
  
- lambda 将会被中断掉，输出：
+ lambda 将会被中断，输出：
  
  ``` ruby
  
@@ -201,5 +201,41 @@ run_couple
  
  注：`#instance_variable_set` 和 `#instance_variable_get` 相当于实现 setter 和 getter 
  
- ## 8)  
+ ## 8)  继承
+ 
+ ``` ruby
+ 
+ class User
+  attr_accessor :name,:age
+
+  def initialize name, age
+    @name = name
+    @age = age
+  end
+
+  def panels
+    @panels ||= ['a', 'b']
+  end
+ end
+
+ class Admin < User
+
+   def panels
+     @panels ||= ['a', 'b', 'c']
+   end
+
+ end
+
+ user = User.new('tom', '15')
+ p user.panels # => ["a", "b"]
+
+ p '-' * 30
+
+ admin = Admin.new('tomas',24)
+ p admin.name # => tomas
+ p  admin.panels # => ["a", "b", "c"]
+ 
+ ```
+ 
+ 
 
