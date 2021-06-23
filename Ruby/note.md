@@ -237,5 +237,35 @@ run_couple
  
  ```
  
+ ## 8)  `super`
+ 
+ - `#super` 不带括号表示调用父类的同名函数，并将本函数的**所有参数传入父类**的同名函数；
+
+ - `#super()` 带括号则表示调用父类的同名函数，但是**不传入任何参数**；
+ 
+ ``` ruby
+ 
+ class Parent
+  def initialize *args
+    args.each{ |arg| puts arg }
+  end
+    
+ end
+
+ class Child < Parent
+   def initialize a,b,c
+     super() # => a b c
+     # super # => put nothing
+   end
+ end
+
+ a, b, c = *%W[a b c]
+ Child.new a, b, c 
+ 
+ ```
+ 
+ 
+ 
+ 
  
 
