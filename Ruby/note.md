@@ -264,6 +264,13 @@ run_couple
  
  ```
  
+ ## 9)  Modules 作用
+ 
+ - namespace
+ - mixin
+ - storage (常量、配置等)
+ 
+  `include` 能把 `module` 中的方法注入为**实例方法**，而 `extend` 则是注入为**类方法**
  
  
  
