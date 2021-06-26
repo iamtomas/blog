@@ -272,7 +272,56 @@ run_couple
  
   `include` 能把 `module` 中的方法注入为**实例方法**，而 `extend` 则是注入为**类方法**
  
+ ## 10) Class & Modules 进阶
  
+ - Class 进阶
  
+ ``` ruby
+ 
+ Array.class # => Class
+ Array.superclass # => Object
+ Object.superclass # => BasicObject
+ BasicObject.superclass #=> nil
+ 
+ ```
+ 
+ - Method Finding 方法查找是自下而上的
+ 
+   eg: 定义 Admin 类和 User 类，他们都有个同名的方法panels，这时查看继承链 `admin.ancestors` ，可以看到 `[ Admin, User, ... ]` 会自下而上先调用自身的方法
+ 
+ - Method Overwrite 方法覆盖
+
+   Class 和 Module 可以重新打开，Method 可以重新定义
+ 
+   使用场景：可以对第三方 lib 或 gem 打补丁，慎用
+ 
+ - include vs prepend
+
+   include 是把当前的 module 注入到当前类的继承链后边
+   prepend 则是把当前的 module 注入到当前类的继承链前边
+   
+   ``` ruby
+   
+   module Company
+    def self.instance_method
+      puts "instance"
+    end
+   end
+
+   class User
+     include Company
+
+   end
+
+   class Admin
+     prepend Company
+
+   end
+
+   puts User.ancestors
+   puts '-' * 30
+   puts Admin.ancestors
+   
+   ```
  
 
