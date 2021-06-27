@@ -323,5 +323,148 @@ run_couple
    puts Admin.ancestors
    
    ```
+   
+   ## 11) included 方法
+   
+   当模块被 include 时**会执行**，同时会传递当前作用域的对象 self ；在 ruby 中这个设计方式很常用
+   
+   ``` ruby
+   
+   module Management
+    def self.included base
+      puts "included #{base}"
+
+      base.include InstanceMethods
+      base.extend ClassMethods
+      base.include Test1
+    end
+
+    module InstanceMethods
+      def company_notifies
+        puts 'instance methods!'
+      end
+    end
+
+    module ClassMethods
+      def progress
+        puts 'class methods!'
+      end
+    end
+   end
+
+   module Test1
+     def test1
+       puts 'test outer module!'
+     end
+   end
+
+   class User
+     include Management
+   end
+
+   puts '-' * 30
+   user = User.new
+
+   puts user.company_notifies
+   puts '-' * 30
+
+   puts User.progress
+   puts '-' * 30
+
+   puts user.test1
+   
+   ```
+   
+   ## 12) `Class#class_eval`
+   
+   ``` ruby
+   
+   # 重新打开类
+   class user
+   end
+
+   User.class_eval do
+     def hello
+       puts 'hello'
+     end
+   end
+
+   user = User.new
+   user.hello
+   
+   ```
+   
+   思考：这与直接重新定义 class 有什么区别呢？
+   
+   `class_eval` 不仅是重新打开目标类、注入其他方法，还能将其放在 included 中自动执行
+   
+   ## 13) `#instance_eval`
+   
+   是所有类的实例方法，它打开的是当前实例作用域
+   
+   ``` ruby
+   
+   a = "hello"
+   a.instance_eval do
+     def hi
+       puts 'hi'
+     end
+   end
+
+   puts a 
+   puts a.hi
+   b = "hello"
+   b.hi # => error
+
+   
+   ```
+   
+   需要注意一点， `#instance_eval` 也可以给类定义新方法，因为对 ruby 来说，类本质也是个实例
+   
+   ``` ruby
+   
+   class User
+   end
+
+   User.class_eval do
+     def hello
+       puts 'hello'
+     end
+   end
+
+   User.instance_eval do
+     def say_hi
+       puts 'hi'
+     end
+   end
+
+   user = User.new
+   User.say_hi
+   user.hello
+   
+   ```
+   
+   ## 14) Gem 的使用
+   
+   Gems 本身受版本依赖，由 bundle 管理
+   另外一些实际运用的场景，比如：RVM 不仅可以提供一个多 Ruby 版本共存的环境，还可以根据项目管理不同的 gemset.
+   
+   ``` bash
+   
+   # 建立 gemset
+   rvm use 1.8.7
+   rvm gemset create rails23
+   
+   # 切换语言或者 gemset
+   rvm use 1.8.7
+   rvm use 1.8.7@rails23
+   
+   # 清空 gemset 中的 Gem
+   rvm gemset empty 1.8.7@rails23
+   
+   # 删除一个 gemset
+   rvm gemset delete rails2-3
+   
+   ```
  
 
