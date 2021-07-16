@@ -24,3 +24,15 @@ end
 
 注：在类初始化的时候自动执行
 
+## 2) Rspec
+
+``` ruby
+
+expect().to receive().and_return() # 对实例变量的某个方法进行mock
+
+expect(self).to receive_message_chain(:a,:b,:find).and_return() # 对方法链进行mock
+
+```
+
+参考自： https://rspec.info/documentation/
+
