@@ -9,3 +9,7 @@
 参考：
 - https://www.pianshen.com/article/17721686391/
 - https://zhuanlan.zhihu.com/p/32841479
+
+## 2） Kafka 经典面试题
+
+https://www.jianshu.com/p/511962462e58
