@@ -1,0 +1,75 @@
+## 前言
+
+在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。
+
+## 定义
+
+与 “条条道路通罗马” 、 “殊途同归”类似，要实现这个目的，可以有不同的方式。
+
+## 示例
+
+``` javascript
+
+function calculate(a, b, method){
+    if(method === 'add'){
+        return a + b;
+    }
+    if(method === 'subtract'){
+        return a - b;
+    }
+    if(method === 'multiply'){
+        return a * b;
+    }
+    if(method === 'pide'){
+        return a / b;
+    }
+}
+calculate(4, 2, 'add');// 6
+calculate(4, 2, 'subtract');// 2
+calculate(4, 2, 'multiply');// 8
+calculate(4, 2, 'pide');// 2
+
+```
+
+构建的函数存在大量的 if 判断语句，缺乏弹性；另外增加计算方法，需要深入内部实现，违反开放-封闭原则，复用性差。
+
+简单说策略模式就是定义一系列算法并封装起来，把算法的实现和使用分离。
+将代码分成两部分：1）策略类  2）环境类
+
+策略类封装具体的算法和计算方式
+环境类接受请求后，将请求委托给策略类
+
+``` javascript
+
+var strategies = { // 策略對象
+    add: function(a, b){
+        return a + b;
+    },
+    subtract: function(a, b){
+        return a - b;
+    },
+    multiply: function(a, b){
+        return a * b;
+    },
+    pide: function(a, b){
+        return a / b;
+    }
+}
+function calculate(a, b, method){ // 環境對象
+    return strategies[method](a, b);
+}
+calculate(4, 2, 'add');// 6
+calculate(4, 2, 'subtract');// 2
+calculate(4, 2, 'multiply');// 8
+calculate(4, 2, 'pide');// 2
+
+```
+
+没有了冗长的判断；想要增加算法，就不必深入 calculate 函數內部修改，直接在策略对象上增加键值对就可以了
+
+## 优缺点
+
+优点：利用组合、委托等思想，有效避免了很多条件语句，封装算法易于扩展，可复用性强
+
+缺点：增加了许多策略对象，必须要了解所有策略（暴露了算法实现），违反了最少知识原则又称迪米特法则
+（最少知识原则：指在软件设计中，应该最小限度地暴露必要内容，而将其他内容隐藏，比如某个模块或API设计）
