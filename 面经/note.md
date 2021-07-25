@@ -13,3 +13,7 @@
 ## 2） Kafka 经典面试题
 
 https://www.jianshu.com/p/511962462e58
+
+## 3) Mysql 常见面试题
+
+https://mp.weixin.qq.com/s/aFoFHGFJXhP4gMWzYhB0Tw
