@@ -107,5 +107,7 @@ ALTER TABLE table ADD FULLTEXT index_name (column_list)
 
 **性能分析**
 
+- MYSQL QUERY optimizer
+- EXPLAIN  
 
 **索引优化**
