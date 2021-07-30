@@ -1,3 +1,7 @@
+![image](https://user-images.githubusercontent.com/83901620/127632240-36d87179-f0d2-4b52-9a4c-09235642fd12.png)
+
+
+
 ## 1) 乐观锁和悲观锁
 
 **乐观锁**
