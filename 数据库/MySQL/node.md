@@ -15,6 +15,7 @@
 
 `$ cd /usr/local/mysql/bin && ls`
 
+``` bash
 .
 ├── mysql
 ├── mysql.server -> ../support-files/mysql.server
@@ -29,6 +30,7 @@
 ├── mysqlpump
 ... (省略其他文件)
 0 directories, 40 files
+```
 
 - mysqld : 启动服务器进程
 - mysqld_safe ： 在 mysqld 的基础上，启动了一个监控进程。当服务器进程挂了，可以帮助重启。另外还可以将错误信息重定向到某个文件中，方便我们查看错误原因
