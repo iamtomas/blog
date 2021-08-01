@@ -2,12 +2,12 @@
 
 ## 前言
 
-参考自 (MySQL 是怎样运行的：从根儿上理解 MySQL
-)[https://juejin.cn/book/6844733769996304392/section/6844733769945972749]
+参考自 [MySQL 是怎样运行的：从根儿上理解 MySQL
+](https://juejin.cn/book/6844733769996304392/section/6844733769945972749)
 
 ### 关于工具
 
-“Jeremy Cole 已经使用 Ruby 开发了一个简易的解析这些基础结构的工具，github地址是：innodb_ruby 的github地址，大家可以按照说明安装上这个工具，可以更好的理解 InnoDB 中的一些存储结构（此工具虽然是针对 MySQL 5.6的，但是幸好MySQL 的基础存储结构基本没多大变化，所以大部分场景下这个 innodb_ruby 工具还是可以使用的）。”
+“Jeremy Cole 已经使用 Ruby 开发了一个简易的解析这些基础结构的工具，github地址是：[innodb_ruby](https://github.com/jeremycole/innodb_ruby) ，大家可以按照说明安装上这个工具，可以更好的理解 InnoDB 中的一些存储结构（此工具虽然是针对 MySQL 5.6的，但是幸好MySQL 的基础存储结构基本没多大变化，所以大部分场景下这个 innodb_ruby 工具还是可以使用的）。”
 
 #### 关于安装
 
