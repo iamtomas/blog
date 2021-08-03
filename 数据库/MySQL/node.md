@@ -113,6 +113,11 @@ MySQL 的优化程序会对我们的语句做一些优化，结果就是生成�
 
 
 
+## 8) InnoDB 记录结构
+
+row_format（行格式）有四种：COMPACT、Redundant、Dynamic 和 Compressed
+
+行溢出：一个页一般是16KB，当记录中的数据太多，当前页放不下的时候，会把多余的数据存储到其他页中
 
 
 
