@@ -90,7 +90,7 @@ run_couple
  # before ruby 2.0
  
  x = 1
- 1..2.each {|x| puts x} # => x = 3
+ (1..2).each {|x| puts x} # => x = 3
  
  ```
  
@@ -246,7 +246,7 @@ run_couple
  
  - `#super` 不带括号表示调用父类的同名函数，并将本函数的**所有参数传入父类**的同名函数；
 
- - `#super()` 带括号则表示调用父类的同名函数，但是**不传入任何参数**；
+ - `#super()` 带括号则表示调用父类的同名函数，但是**传入括号内的参数**；
  
  ``` ruby
  
@@ -259,12 +259,12 @@ run_couple
 
  class Child < Parent
    def initialize a,b,c
-     super() # => a b c
-     # super # => put nothing
+     # super() # put nothing
+     super # => => a b c
    end
  end
 
- a, b, c = *%W[a b c]
+ a, b, c = *%W[a b c] 
  Child.new a, b, c 
  
  ```
