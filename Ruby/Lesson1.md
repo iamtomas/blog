@@ -1,4 +1,9 @@
-## 1) `String` 和 `Symbol` 类型区别
+
+## 解决内存泄漏中不错的文章
+
+https://www.joyfulbikeshedding.com/blog/2019-03-14-what-causes-ruby-memory-bloat.html
+
+## `String` 和 `Symbol` 类型区别
 
 ``` ruby
 
@@ -19,7 +24,7 @@ a.object_id # => 2181148
  `#object_id` 即内存中指针指向的地址; `String` 每次赋值都会生成一个新的内存空间， `Symbol` 则与 `String` 不同，它效率高、耗存少且不可变，所以一般不频繁修改的话优先使用 `Symbol` , 占用更少资源、性能更优
  
  
- ## 2) `Proc` 和 `Lambda` 区别
+ ## `Proc` 和 `Lambda` 区别
  
  ### 区别一: return
 
@@ -73,7 +78,7 @@ run_couple
  
  ```
  
- ## 3) 了解 `Block` 
+ ## 了解 `Block` 
  
  - 作为参数
  - 匿名函数
@@ -93,14 +98,14 @@ run_couple
  
  通过 `yield` 和 `call` 调用块代码 
  
- ## 4) 了解 `Boolean` 表达式
+ ## 了解 `Boolean` 表达式
  
  - &&,||,!
  - and,or,not
 
  注：表达式的优先级
  
- ## 5)  `String` 常用方法
+ ##  `String` 常用方法
  
  1. `#sub` 和 `#gsub` 区别
   `#sub` 匹配第一个字符并替换
@@ -148,7 +153,7 @@ run_couple
    
    ```
   
-  ## 6)  内置方法 `send` 和 `respond_to?`
+  ##  内置方法 `send` 和 `respond_to?`
   
   ``` ruby
   
@@ -167,7 +172,7 @@ run_couple
   
   ```
   
-  ## 7)  `defined_method` 实现简易的 `attr_accessor`
+  ##  `defined_method` 实现简易的 `attr_accessor`
   
   ``` ruby
   
@@ -201,7 +206,7 @@ run_couple
  
  注：`#instance_variable_set` 和 `#instance_variable_get` 相当于实现 setter 和 getter 
  
- ## 8)  继承
+ ##  继承
  
  ``` ruby
  
@@ -237,7 +242,7 @@ run_couple
  
  ```
  
- ## 9)  `super`
+ ##  `super`
  
  - `#super` 不带括号表示调用父类的同名函数，并将本函数的**所有参数传入父类**的同名函数；
 
@@ -264,7 +269,7 @@ run_couple
  
  ```
  
- ## 10)  Modules 作用
+ ##  Modules 作用
  
  - namespace
  - mixin
@@ -272,7 +277,7 @@ run_couple
  
   `include` 能把 `module` 中的方法注入为**实例方法**，而 `extend` 则是注入为**类方法**
  
- ## 11) Class & Modules 进阶
+ ## Class & Modules 进阶
  
  - Class 进阶
  
@@ -324,7 +329,7 @@ run_couple
    
    ```
    
- ## 12) included 方法
+ ## included 方法
 
  当模块被 include 时**会执行**，同时会传递当前作用域的对象 self ；在 ruby 中这个设计方式很常用
 
@@ -375,7 +380,7 @@ run_couple
 
  ```
 
- ## 13) `Class#class_eval`
+ ## `Class#class_eval`
 
  ``` ruby
 
@@ -398,7 +403,7 @@ run_couple
 
  `class_eval` 不仅是重新打开目标类、注入其他方法，还能将其放在 included 中自动执行
 
- ## 14) `#instance_eval`
+ ## `#instance_eval`
 
  是所有类的实例方法，它打开的是当前实例作用域
 
@@ -444,7 +449,7 @@ run_couple
 
  ```
 
- ## 15) Gem 的使用
+ ## Gem 的使用
 
  Gems 本身受版本依赖，由 bundle 管理
  另外一些实际运用的场景，比如：RVM 不仅可以提供一个多 Ruby 版本共存的环境，还可以根据项目管理不同的 gemset.
@@ -467,18 +472,18 @@ run_couple
 
  ```
 
- ## 16) require 和 load
+ ## require 和 load
 
  相同点： 都会在 $LOAD_PATH 下面查找当前要引入的文件
  不同点： 
  - require 调用文件时不需要 ".rb" 的文件后缀，而 load 需要.
  - require 对同样的文件只会调用一次，存在缓存，而 load 会反复调用 （可以通过打印 `require 'net/http' ` 判断，第一次返回 true ，之后返回 false ，而 load 一直都是 true ）
 
- ## 17) 文件操作
+ ## 文件操作
  
  待补充
  
- ## 18) Process & Thread
+ ## Process & Thread
  
  ``` ruby
  
