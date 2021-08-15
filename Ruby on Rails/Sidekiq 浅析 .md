@@ -1,7 +1,7 @@
 
 ## 前言
 
-参考的 [Sidekiq 的源码分析](https://ruby-china.org/topics/31470) 对应版本是 4.2.3，此篇笔记主要是与当前版本 6.0.2 比较不同
+参考的 [Sidekiq 的源码分析](https://ruby-china.org/topics/31470) 对应版本是 4.2.3，此篇笔记主要是与当前版本 6.0.2 比较不同以及补充
 
 ## 
 
