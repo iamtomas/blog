@@ -3,9 +3,7 @@
 
 参考的 Martin 大佬的文章 [Sidekiq 的源码分析](https://ruby-china.org/topics/31470) ，其对应版本是 4.2.3，此篇笔记主要是与分析当前版本 6.0.2 并比较不同之处及疑问
 
-通过时序图理清关系的习惯，get✅ 
-
-此图最后更新自己理解的版本
+通过时序图理清关系的习惯，get ✅ 
 
 ![image](https://user-images.githubusercontent.com/83901620/129534361-12ae23c2-8c5b-46cd-81a3-3cb83bf5c622.png)
 
@@ -160,6 +158,12 @@ def self.❨╯°□°❩╯︵┻━┻
 end
 
 ```
+
+到这为止讲述了真正启动前的准备动作，后面继续分析 `Poller` 、 `Manager` 及 `Processor`
+
+--- 
+
+
 
 
 
