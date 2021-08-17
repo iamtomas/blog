@@ -1,9 +1,11 @@
+本着提高阅读源码能力和欣赏大佬的代码，打算在此分享处女篇 `Sidekiq 浅析（一）` ，希望大佬能指出不足之处
+
 
 ## 前言
 
 参考的 Martin 大佬的文章 [Sidekiq 的源码分析](https://ruby-china.org/topics/31470) ，其对应版本是 4.2.3，此篇笔记主要是与分析当前版本 6.0.2 并比较不同之处及疑问
 
-通过时序图理清关系的习惯，get ✅ 
+通过时序图理清关系的习惯，get ✅  （后续分析完附上自己理解的时序图）
 
 ![image](https://user-images.githubusercontent.com/83901620/129534361-12ae23c2-8c5b-46cd-81a3-3cb83bf5c622.png)
 
@@ -78,7 +80,9 @@ end
 2、 创建 pipe 并启动信号的捕获
 
 疑问一：Sidekiq 的信号量机制是怎么发送、捕获，到底是通过 pipe 还是 socket（前边 systemd 状态变化是通过 socket ） 来实现进程的通信（原谅我操作系统菜 = =） ，这一过程有没大佬能简单明了得描述下？
+
 疑问二：Redis 线程池数量 < concurrency + 2 性能会显著降低，那么 concurrency 在各个环境下应该设置为多少？
+
 疑问三：在哪、又是如何控制进程的？
 
 ```ruby
@@ -114,7 +118,7 @@ cursize = Sidekiq.redis_pool.size
 needed = Sidekiq.options[:concurrency] + 2
 raise "Your pool of #{cursize} Redis connections is too small, please increase the size to at least #{needed}" if cursize < needed
 
-# 中间链，我将这一步其理解为从 queue 到 perform 这一过程可插入的代码块；与其类似的 client_middleware ，则是从 client 推入任务前可插入的代码块
+# 用于及时捕捉失败的任务，针对允许再次重试的任务，按失败次数计算新的重试时间
 Sidekiq.server_middleware
 
 # 疑问三！！
