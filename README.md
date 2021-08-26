@@ -1,2 +1,2 @@
-# Tomas's note
+# Tomas's blog
 
